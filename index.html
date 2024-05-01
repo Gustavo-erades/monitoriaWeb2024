@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Para usar o CSS de maneira externa (em outro arquivo) é necessário importar 
+    esse arquivo no head usando a tag link -->
+    <link rel="stylesheet" href="./assets/estilos/style.css"> 
+    <!-- Aqui eu só defino um ícone para a página --> 
+    <link rel="shortcut icon" href="./assets/imagens/icons8-robô-100.png" type="image/x-icon">
+    <title>TecBlog - O seu Blog de tecnologia</title>
+    <!-- Outra forma de se usar o CSS é com a tag style aberta dentro do head -->
+    <style>
+        #noticias-lado-h4-bold{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- defino classes e ids para trabalhar com esses elementos no meu css -->
+    <!-- uma classe é usada, por convenção, para definir um conjunto de elementos
+        e um id para se mexer com um elemento em específico -->
+    <header class="header" id="home">
+        <div id="logo">
+            <h1>Tec<span id="blog-logo">Blog</span></h1>
+        </div>
+        <div id="menu">
+            <a href="#github">GitHub</a>
+            <a href="#novidades">novidades</a>
+            <a href="#prog">programação</a>
+            <a href="#duv">dúvidas</a>
+        </div>
+    </header>
+    <div class="conteudo">
+        <aside class="noticias">
+            <section class="noticias-lado">
+                <h3>Postagens recentes</h3>
+                <p>Alguma dúvida? Me mande uma mensagem, assim que possível retorno contato para te ajudar</p>
+                <!-- Além de links o href de uma tag a pode ser usada para enviar email com mailto e até ligar/mandar mensagem com o tel-->
+                <a href="tel:+5561994490664">Mandar mensagem</a>
+            </section>
+            <section class="noticias-lado">
+                <!-- Uma outra forma de se usar o CSS é com ele inline (na linha) -->
+                <h4 style="font-weight: bold;">Como é possível acessar essa página pela internet?</h4>
+                <p> Essa página está sendo hospedada no GitHub Pages. No GutHub você pode hospedar páginas web gratuitamente desde que elas trabalhem apenas com tecnologias front-end!</p>
+            </section>
+            <section class="noticias-lado">
+                <!-- A tag iframe pode ser usada para se colocar vídeos,
+                    localizações, imagens etc na sua página. É possível colocar até mesmo áudios em sua página web (há a tag audio por exemplo) --> 
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202844.8913472017!2d-122.04109805!3d37.40280355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb68ad0cfc739%3A0x7eb356b66bd4b50e!2sVale%20do%20Sil%C3%ADcio%2C%20CA%2C%20EUA!5e0!3m2!1spt-BR!2sbr!4v1714568998273!5m2!1spt-BR!2sbr" ></iframe>
+                <p> Vale do Silício, Califórnia, Estados Unidos da América, concentra startups e empresas de tecnologia</p>
+                <a href="https://pt.wikipedia.org/wiki/Vale_do_Sil%C3%ADcio" target="_blank">saiba mais</a>
+            </section>
+             <section class="noticias-lado">
+                <h4 id="noticias-lado-h4-bold">Procure outros sites!</h4>
+                <p>Há vários sites na internet que te ajudarão a pegar a sintaxe do html e do css e te ensinaram muito. O segredo é não parar de pesquisar e procurar no máximo de lugares possível</p>
+                O site da <a href="https://www.devmedia.com.br/introducao-pratica-ao-css/40682" target="_blank">Dev Media</a> é um exemplo.
+            </section>
+        </aside>         
+        <section class="postagem" id="github">
+            <h2>GitHub</h2>
+            <span>postado em 01 de maio de 2024</span>
+            <img src="./assets/imagens/imagem1.jpg" width="660px">
+            É um repositório de código, você pode usá-lo para guardar seu código, versionar seu código (com a ajuda do Git), estudar, trabalhar com mais desenvolvedores em projetos, etc. 
+            <br> <!-- essa tag quebra o texto, significa break -->
+            No meu repositório há alguns projetos que fiz/faço enquanto estudava/estudo, se quiser pode dar uma olhada nos repositórios "finans", "notícias cidade" ou "museu nacional"  para entender mais de HTML e CSS.
+            <a href="https://github.com/Gustavo-erades" target="_blank">Meu GitHub</a>
+        </section>
+
+        <section class="postagem" id="duv">
+            <h2>StackOverflow- Sua dúvida já foi respondida</h2>
+            <img src="./assets/imagens/imagem2.jpg" width="660px">
+            É um fórum, alguém pergunta e outro alguém responde. É muito provável que sua dúvida também seja a dúvida de outra pessoa e por isso não é difícil achar respostas para suas dúvidas aqui.
+            <br>
+            <a href="https://pt.stackoverflow.com/" target="_blank">Ir para StackOverFlow</a>
+        </section>
+
+        <section class="postagem" id="prog">
+            <h2>W3 School - Aqui há tudo sobre o HTML</h2>
+            <span>documentação HTML</span>
+            <img src="./assets/imagens/imagem3.jpg" width="660px">
+            Possui alguma dúvida quanto ao HMTL, CSS ou JavaScript? Aqui há uma boa documentação que te ajudará a desenvolver suas páginas na web. O conteúdo é atualizado e de fácil leitura! Aproveite!
+            <br>
+            <a href="https://www.w3schools.com/html/" target="_blank">Leia mais</a>
+        </section>
+
+        <section class="postagem" id="novidades" style="border-bottom:3px dotted #ccc;">
+            <h2>NYC Brunch Squad - Empresa Meta</h2>
+            <span>postado em 16 de abril de 2024</span>
+            <!-- essa tag é a tag de vídeo, poderia ter sido usado um iframe aqui também. Aqui coloco o vídeo para começar sozinho (loop), sem som (muted) e em loop (loop) -->
+            <video width="660px" autoplay muted loop>
+                <source src="./assets/videos/videoMeta.mp4" type="video/mp4">
+            </video>
+            <p>
+                Making new friends in a new city can be hard, which is what inspired Liza created NYC Brunch Squad on Facebook and Instagram. She’s now helped hundreds of women find  new friendships…with a side of brunch.
+            </p>
+            <br>
+            <!-- A tag strong faz o mesmo que a tag b, deixa o texto em negrit-->
+            <a href="https://about.meta.com/br/" target="_blank">Conheça a <strong>Meta</strong></a>
+        </section>
+        <!-- o clear está limpando tanto a esquerda quanto a direita porque há elementos que estão flutando tanto a esquerda quanto a direita e isso poderia quebrar meu layout caso eu quisesse adicionar mais elementos-->
+        <div id="limpar" style="clear:both;">
+        </div>
+        <!-- tag de botão, há atributos que podem ser colocados nela como o type="submit" (substituindo o input submit) quando se usa um formulário por exemplo-->
+        <button>
+            <a href="#home">Ir para o início</a>
+        </button>
+    </div>
+    <!-- footer, header, section, aside, div, span, etc. É tudo a mesma coisa, servem apenas para organizar melhor seu html te permitindo identifcar mais ou menos o que aquela "div" está fazendo e onde ela está em sua página. A diferença do span para a div é que a div é um elemento de bloco (display block) e o span um elemento de linha (display inline), portanto o span não ocupa todo o espaço nem quebra a linha, como a div faz-->
+    <footer id="footer">
+        <h3 id="fonte_nova">Gustavo Êrades 2024</h3>
+        <!-- o &copy; é uma entidade html, há várias delas, que poe o C de copywrite. É bem legal. -->
+        <h4> &copy; Todos os direitos reservados | Monitoria Estácio</h4>
+    </footer>
+</body>
+</html>

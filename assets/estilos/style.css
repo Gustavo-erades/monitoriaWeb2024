@@ -1,0 +1,164 @@
+*{
+    padding: 0;
+    margin: 0;
+} /* O seletor * seleciona todos os elementos da página */
+html, body{
+     scroll-behavior: smooth;
+} /* Aqui eu seleciono o elemento html e o body para definir o smooth quando um 
+    link leva para algum elemento da página, deixando o scroll bem suave */
+body{
+    background-color:aliceblue; /* define a cor do background da página toda, do body todo */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* define as fontes que serão usadas na página. Caso não possa usar a primeira vai
+    para a segunda e assim por diante */
+} 
+@font-face{ /*baixei uma fonte que está na pasta"fontes". Aqui eu uso essa nova fonte*/
+    font-family:"nova fonte" ; /* nome que quero usar para chamar essa nova fonte */
+    src:url("../fontes/brittany_signature/BrittanySignature.ttf")
+    /*caminho para essa nova fonte. Os dois pontos indicam que meu arquivo style deve
+    sair da pasta "estilos" e seguir procurando por "fontes", "brittany_signature" até achar a fonte*/
+}
+.header{ /* Aqui eu seleciono o elemento que tem a classe header, o ponto no começo indica que
+eu estou procurando por uma classe */
+    background-color: rgb(255, 187, 0); /* define a cor de fundo usando o rgb (red, green, blue) */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1em; /* define o tamanho da fonte, a medida "em" é medida com base no tamanho padrão do projeto.
+    Salvo engano, no chrome o padrão de fonte é 16px então nesse caso 1 em equivale a 16 pixels */
+    padding: 15px; /* O padding é um espaçamento interno, dentro do elemento, aqui defino ele como sendo de 15 pixels */
+    text-align: center; /*Alinho o texto ao centro, nem sempre funcionará alinhar assim, aqui funciona 
+    porque estou alinhando um texto e esse texto está dentro de um elemento que cobre 100% da minha tela.
+    Às vezes é necessário usar align-content, margin-left e margin-righ como auto, margin-left e top como 0, grid, etc. 
+    Há várias maneiras de se alinhar elementos ao centro, você pega com o tempo.*/
+}
+#logo, #menu{ /*Sempre que se põe o # você está procurando por um id e não uma classe*/
+    padding: 10px;
+}
+#logo{
+    font-size: 2em;
+    color: rgb(39, 39, 39);
+}
+#blog-logo{
+    color: aliceblue; /*define a cor do texto*/
+    font-weight: bold; /*define o texto como sendo em negrito, há outros valores para font-wight*/
+}
+#menu a{
+    color: aliceblue;
+    text-decoration: none; /*aqui eu retiro a linha de baixo do link que fica incialmente por padrão
+    porém há outros valores para text-decoration*/
+    padding: 10px;
+    text-transform: uppercase; /*coloco o texto todo em caixa alta, mas há outros valores para text-transform, 
+    é possível deixar apenas a primeira letra maíscula com o capitalize por exemplo ou todas minusculas com o lowercase*/
+}
+#menu a:hover{ /*o :hover indica que quando o mouse passar em cima do elemento de tag a (o link) ele vai fazer o que estiver dentro das chaves*/
+    color: rgb(255, 187, 0);
+    background-color: aliceblue;
+}
+.conteudo{
+    padding: 15px;
+    width: 920px; /*defino a largura máxima para esse elemento que engloba a página toda*/
+    margin: 0 auto;/* o margin é um espaçamento externo, aqui eu defino o margin-top e bottom (em cima e embaixo) como 0
+    e o margin-left e right (esquerdo e direito) como automático. É possível definir cada um separadamente também. Ex:
+    margin: 0 auto 0 auto;
+    ou
+    margin-top:0;
+    margin-right:auto;
+    margin-bottom:0;
+    margin-left:auto;
+    ambos teriam o mesmo efeito*/
+}
+.postagem{
+    padding: 5px;
+    width: 660px;
+    float: left; /*flutuo o elemento na esquerda, isso pode quebrar seu layout (como os elementos ficam distribuidos na sua página)
+    então é necessário "limpar" essa flutuação em algum momento com clear:both(caso flutue na esquerda e na direita) ou clear:left(caso só flutue na esquerda) ou clear:right (caso só flutue na direita)*/
+    background-color: aliceblue;
+}
+.noticias{
+    width:240px;
+    float: right;
+    background-color: aliceblue;
+}
+.noticias h3{ /*Aqui preste atenção na ordem. Eu estou selecionando a classe noticias e, dentro dessa classe, o elemento h3*/
+    text-align: center;
+    background: #ccc;
+    display: block; /*O display block faz com que elementos que sejam colocados após o h3 sejam quebrados para a linha de biaxo automaticamente
+    pois o block (bloco) toma todo o espaço (do início ao fim) que puder tomar*/
+    padding: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+.noticias p{
+    text-align: justify; /*deixa o texto dos parágrafos justificado*/
+    padding: 8px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.noticias a{
+    padding: 5px;
+    color: rgb(255, 187, 0);
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.noticias a:hover{
+    text-decoration: underline;
+}
+.noticias-lado{
+    margin: 5px;
+    border-bottom: 3px dotted #ccc;
+}
+.noticias-lado iframe{
+    width: 100%;
+    border:0;
+}
+img, video{ /*Aqui eu seleciono o elemento img e o elemento video, para dar a eles a mesma formatação*/
+    border-radius: 12px; 
+}
+h2{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(255, 187, 0);
+    font-size: 2em;
+}
+.postagem span{
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: block;
+    padding-bottom: 10px;
+    margin:10px;
+    border-bottom: 3px dotted #ccc; /*o border aqui tem largura de 3 pixels, é do tipo pontilhado e tem essa cor semelhante ao cinza.
+    Você pode usar apenas border ou definir border-top, border-left, etc. (assim como o margin ou o padding)*/
+}
+.postagem a{
+    text-decoration: none;
+    color:rgb(255, 187, 0);
+}
+.postagem a:hover{
+    text-decoration: underline;
+}
+#footer{
+    text-align: center;
+    width: 100%
+    font-weight: bold;
+    padding: 5px;
+    margin-top:10px;
+    margin-bottom:10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#fonte_nova {
+            font-family: "nova fonte" ; /*chamo a nova fonte que defini no inicio desse documento*/
+}
+button{
+    background-color: rgb(255, 187, 0);
+    border-radius: 8px;
+    color:#000; /*esse #000 é a cor preta no padrão hexadecimal, é um outro esquema de cores também aceito pelo css
+    assim como o rgb, rgba (em que é possível definir a opacidade também) ou o próprio nome da cor em inglês*/
+    padding: 12px;
+    border:none;
+    margin-top: 10px;
+}
+button a{
+    color:#fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+button a:hover{ /*quando o mouse passar em cima do link dentro do botão, o texto vai ficar na cor preta*/
+    color:#000;
+}
