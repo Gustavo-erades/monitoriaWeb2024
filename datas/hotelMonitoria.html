@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="iconeCalendario.png" type="image/x-icon">
+    <title>Calculo de datas</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color:#F2DEC4;
+        }
+        .conteudo{
+            margin-top: 50px;
+        }
+        .boxConteudo{
+            text-align: center;
+        }
+        .alerta, #alertaErro{
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #00E398;
+            display: inline-block;
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+        .alerta>p, #alertaErro>p{
+            font-size: 1em;
+            font-weight: 900;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color:#417334;
+        }
+        .botao{
+            background-color:#FC5B3F ;
+            color:#fff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 0;
+            text-transform: capitalize;
+            font-size: 1em;
+            cursor: pointer;
+            font-weight: bold;
+            display: block;
+        }
+        .botao:hover{
+            background-color: #CC3333;
+        }
+        #boxFormulario{
+            display: none;
+        }
+        .formulario{
+            background-color: rgba(255,255,255,0.5);
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 20px 50px 20px 50px;
+        }
+        .campoInput{
+            margin-bottom: 20px;
+            border-bottom: 1px solid #C0C0C0;
+        }
+        label{
+            display: block;
+            text-align: justify;
+            font-weight: bold;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-transform:capitalize;
+            padding-left: 0;
+            margin-top: 5px;
+        }
+        input, select{
+            display: inline-block;
+            width: 100%;
+            height: 40px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: none;
+            padding: 5px;
+            text-align: center;
+            font-size: 1.2em;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #FCE5B9;
+        }
+        #resultado{
+            font-weight: bold;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 1.2em;
+        }
+        #alertaErro{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="conteudo">
+        <div class="boxConteudo">
+            <span class="alerta">
+                <p class="alertaTexto">* Todo o cálculo é feito com JS e todo o código com HTML / CSS e JS está no arquivo index.html</p>
+                <p class="alertaTexto" style="padding-top:5px">* A lógica para cálculo de data teve como base este artigo: <a href="https://metring.com.br/diferenca-entre-datas-em-javascript" target="_blank" style="text-decoration: underline;">acessar artigo</a></p>
+            </span>
+            <button class="botao" style="margin-left:auto;margin-right:auto;" onclick="abrirForms()">
+                fazer check-in
+            </button>
+            <div class="boxFormulario" id="boxFormulario">
+                <div class="formulario">
+                    <div class="campoInput">
+                        <label for="checkin">data de check-in</label>
+                        <input type="date" name="checkin" id="checkin">
+                    </div>
+                    <div class="campoInput">
+                        <label for="checkout">data de check-out</label>
+                        <input type="date" name="checkout" id="checkout">
+                    </div>
+                    <div class="campoInput">
+                        <select name="campoSelect" id="valoresSelect">
+                            <option value="10">quarto 1</option>
+                            <option value="20">quarto 2</option>
+                            <option value="30">quarto 3</option>
+                            <option value="40">quarto 4</option>
+                        </select>
+                    </div>
+                    <button class="botao" style="width:100%" onclick="fazCalculo()">cadastrar</button>
+                    <button class="botao" style="width:100%; margin-top:20px" onclick="fecharForms()">Cancelar</button>          
+                </div>
+            </div>
+            <span><p id="resultado"></p></span>
+            <span id="alertaErro" style="background-color: #CC3333;margin-top:10px;">
+                <p id="erro" style="color:#fff"></p>
+            </span>
+        </div>
+    </div>
+    <script>
+        //função para fechar o fomulário
+        function abrirForms(){
+            var campoForms=document.getElementById("boxFormulario");
+            campoForms.style.display="block";
+        }
+        //função para abrir o formulário
+        function fecharForms(){
+            var campoForms=document.getElementById("boxFormulario");
+            var resultado=document.getElementById("resultado");
+            var checkin=document.getElementById("checkin").value='';
+            var checkout=document.getElementById("checkout").value='';
+            campoForms.style.display="none";
+            document.getElementById("alertaErro").style.display="none";
+            resultado.innerHTML=" ";
+        }
+        //função para efetuar o cálculo
+        function fazCalculo(){
+            var resultado=document.getElementById("resultado");
+            //pega os valores
+            // o new Date transforma os valores digitados nos campos inputs do tipo "date" em um formato de data padrão que o código é capaz de interpretar
+            var checkin=new Date(document.getElementById("checkin").value);
+            var checkout=new Date(document.getElementById("checkout").value);
+            //var diaria=document.getElementById("diaria").value;
+            var valoresSelect = document.getElementById('valoresSelect').value
+           
+            //verifica se o usuário realmente digitou algo
+            if(checkin!='Invalid Date' && checkout!='Invalid Date'){
+                document.getElementById("alertaErro").style.display="none";
+                //faz o cálculo]
+                //O Math.abs está pegando o valor absoluto da subtração, ou seja, sem o valor negativo (não importanto a ordem em que vamos colocar o checkin e o checkout)
+                //o getTime() está passando as datas para milissegundos (calculando os milissegundo que passaram desde 1/01/1970 até a data especificada)
+                var diferenca=Math.abs(checkin.getTime()-checkout.getTime());
+                // o Math.ceil está arredondando o valor da divião para cima para dar sempre números exatos.
+                //a diferença (data de checkin - data de checkout) é dividida pelo número de milissegundos em 1 dia. É como converter de milissegundos para dias.
+                // Em 1 segundo há 10000 milissegundos
+                // 1 minuto possui 60 segundos
+                // 1 hora possui 60 minutos
+                // e 1 dia possui 24 horas
+                // sendo assim, multiplando tudo isso temos a quantidade de milissegundos em 1 dia. Ao divirdimos a diferença entre as datas (em milissegundos) por esse valor temos a quantidade de dias que a pessoa ficará hospedada. 
+                var dias =Math.ceil(diferenca/(1000*60*60*24));
+                // multiplicamos a quantidade de dias pelo preço da diária e temos o total que será pago. 
+                var preco=(dias*valoresSelect).toFixed(2);
+                //exibe o resultado
+                resultado.innerHTML="Você ficará "+dias+" dias hospedado e pagará R$ "+preco+" reais pela estadia.";
+            }else{
+                document.getElementById("alertaErro").style.display="inline-block";
+                document.getElementById("erro").innerHTML="Por favor, preencha todos os campos.";
+            }
+        }
+    </script>
+</body>
+</html>
